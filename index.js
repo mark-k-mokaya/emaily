@@ -24,14 +24,13 @@ require('./routes/authRoutes.js')(app);
 require('./routes/billingRoutes.js')(app);
 
 if (process.env.NODE_ENV === 'production') {
-	// serve up production assets
-	app.use(express.static('client/build'));
-
-	// serve up index.html for unknown routes
 	const path = require('path');
+	// serve up production assets
+	app.use(express.static(path.join(__dirname, 'client/build')));
+	// serve up index.html for unknown routes
 	app.get('*', (res, req) => {
-		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-	})
+		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+	});
 }
 
 const PORT = process.env.PORT || 5000;
