@@ -24,19 +24,11 @@ require('./routes/authRoutes.js')(app);
 require('./routes/billingRoutes.js')(app);
 
 if (process.env.NODE_ENV === 'production') {
-<<<<<<< HEAD
 	// serve up production assets
 	app.use(express.static('client/build'));
 	const path = require('path');
 	// serve up index.html for unknown routes
 	app.get('*', (req, res) => {
-=======
-	const path = require('path');
-	// serve up production assets
-	app.use(express.static(path.join(__dirname, 'client/build')));
-	// serve up index.html for unknown routes
-	app.get('*', (res, req) => {
->>>>>>> f87b8e8f82d2fd3aad60270f0e7d868d1f5d7778
 		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 	});
 }
